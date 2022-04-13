@@ -6,7 +6,7 @@ addpath('Module\');
 for pob = 2:8
     for NUM = 1:20
         filename = ['n30p',num2str(pob),'-',num2str(NUM)];
-        Adj = readmatrix(['Data\StableSet\',filename,'.txt']);%adjacency matrix 
+        Adj = readmatrix(['ErdosRenyiGraph\',filename,'.txt']);%adjacency matrix 
         n = width(Adj);
         [At_sdp,b_sdp,c_sdp,K_sdp]= FormStabelSetProblem_DualSDP(Adj);
         
