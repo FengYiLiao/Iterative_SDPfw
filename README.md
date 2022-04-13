@@ -2,7 +2,7 @@
 
 This work is an extension of our paper: [Block Factor-width-two Matrices and Their Applications to Semidefinite and Sum-of-squares Optimization](https://arxiv.org/abs/1909.11076)
 
-We aim to develop iterative method to approxiamte PSD cone constraint. 
+We aim to develop iterative algorithm to approxiamte PSD cone constraint. 
 Our algorithm generate a sequence of lower/upper bound of the solution. 
 <p align="center">
 
