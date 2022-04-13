@@ -1,7 +1,7 @@
 %%TestStableSet both direction
 clear;clc;
 filename = 'n30p2'
-Adj = readmatrix(['SedumiData\StableSet\',filename,'.txt']);%adjacency matrix 
+Adj = readmatrix(['ErdosRenyiGraph\',filename,'.txt']);%adjacency matrix 
 Inner = [];  Outer = [];
 Marker = ['o','d','p'];
 Color = ['r','g','b'];
