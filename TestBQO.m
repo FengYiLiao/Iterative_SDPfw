@@ -1,5 +1,6 @@
 %%TestBQO
 clc;clear; 
+addpath('Module\');
 dx = 10;
 Maxiter = 10;
 load('SedumiData\BQO\100_1.mat');
