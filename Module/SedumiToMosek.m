@@ -9,6 +9,7 @@ function prob = SedumiToMosek(At,b,c,K)
     %4. roated-second-order cone(K.r)
     %5. semidefinite(K.s)
         
+    %Auther: Feng-Yi, Liao
 
     if isfield(K,'f')
         NumOfFree = K.f;
