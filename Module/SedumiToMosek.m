@@ -6,9 +6,7 @@ function prob = SedumiToMosek(At,b,c,K)
     %The reason we seperate homogeneous case and unhomogeneous case is just
     %to precipitate the process
     
-    %Consider 2 cases. 
-    %1. K.s is homogeneous partition. 
-    %2. K.s is not homogeneous.
+
     
 
     NumOfPSD = length(K.s);
