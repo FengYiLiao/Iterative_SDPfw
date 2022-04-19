@@ -53,9 +53,8 @@ function prob = SedumiToMosek(At,b,c,K)
     LenQuad = sum(K.q,'all');%total number of Quad variables
     LenRQuad = sum(K.r,'all');%total number of Rotated Quad variables
     LenLinear = NumOfFree+LenNonneg+LenQuad+LenRQuad;
-    LenPSD = 0;%total number of PSD variables (only symmetric part)   
     steps = K.s.*(K.s+1)./2;
-    LenPSD = sum(steps,'all');    
+    LenPSD = sum(steps,'all'); %total number of PSD variables (only symmetric part)   
     
     
     [hei,wei] = size(At);
@@ -120,7 +119,7 @@ function prob = SedumiToMosek(At,b,c,K)
     for i = 1:NumOfPSD
         step = K.s(i)*(K.s(i)+1)/2;
         PSDIDX(start:start+step-1) = i;
-        [IndSym,IndDiag] = SymmetricIndices(K.s(i));
+        [IndSym,~] = SymmetricIndices(K.s(i));
         [row,col]=ind2sub([K.s(i),K.s(i)],IndSym);
         symrows(start:start+step-1) = row;
         symcols(start:start+step-1) = col;
@@ -150,7 +149,7 @@ function prob = SedumiToMosek(At,b,c,K)
     
     
     %Obj_PSD
-    [r,c,v]=find(c_s(IntIdxsPSD));
+    [r,~,v]=find(c_s(IntIdxsPSD));
     prob.barc.subj = PSDIDX(r);
     prob.barc.subk = symrows(r);
     prob.barc.subl = symcols(r);
