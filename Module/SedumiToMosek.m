@@ -1,6 +1,7 @@
 function prob = SedumiToMosek(At,b,c,K)
     %Convert data in Sedumi Standard Primal form to Mosek 
     %Update: 04/17/2022
+    %Author: Feng-Yi, Liao
     %*******Important********
     %We consider the following 5 cones 
     %1. free(K.f)
@@ -72,7 +73,7 @@ function prob = SedumiToMosek(At,b,c,K)
         QUADSUB = cumsum(QUADSUB);
         QUASDCONE = repmat(res.symbcon.MSK_CT_QUAD,1,NumOfQuad);
         start = 1;
-        Offset = NumOfFree+LenNonneg; %% notice the difference with Rotated Second order cone constraint
+        Offset = NumOfFree+LenNonneg; %% notice the difference with Rotated Second constraint
         for i = 1:NumOfQuad
             step = K.q(i);
             QUADIDX(start:start+step-1) = (1:K.q(i))+Offset;
@@ -91,7 +92,7 @@ function prob = SedumiToMosek(At,b,c,K)
         RQUADSUB = cumsum(RQUADSUB);      
         RQUASDCONE = repmat(res.symbcon.MSK_CT_RQUAD,1,NumOfRQuad);%%
         start = 1;
-        Offset =  NumOfFree+LenNonneg+NumOfQuad; %% notice the difference with Second order cone constraint
+        Offset =  NumOfFree+LenNonneg+NumOfQuad; %% notice the difference with Rotated Second constraint
         for i = 1:NumOfRQuad
             step = K.r(i);
             RQUADIDX(start:start+step-1) = (1:K.r(i))+Offset;
